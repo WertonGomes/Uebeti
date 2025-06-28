@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+      <canvas id="unity-canvas" width=2532 height=1170 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -52,12 +52,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Web.loader.js";
+      var loaderUrl = buildUrl + "/Uebeti_Web.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/Web.data.br",
-        frameworkUrl: buildUrl + "/Web.framework.js.br",
-        codeUrl: buildUrl + "/Web.wasm.br",
+        dataUrl: buildUrl + "/Uebeti_Web.data.gz",
+        frameworkUrl: buildUrl + "/Uebeti_Web.framework.js.gz",
+        codeUrl: buildUrl + "/Uebeti_Web.wasm.gz",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "WeirdProduction",
         productName: "Uebeti",
@@ -98,8 +98,8 @@
 
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        canvas.style.width = "2532px";
+        canvas.style.height = "1170px";
       }
 
       document.querySelector("#unity-loading-bar").style.display = "block";
