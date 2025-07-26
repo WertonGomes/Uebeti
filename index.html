@@ -3,9 +3,9 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Unity Web Player | Uebeti</title>
-  <link rel="shortcut icon" href="TemplateData/favicon.ico">
+  <title>Unity Web Player | MoscaCerta</title>
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+  <link rel="shortcut icon" href="TemplateData/favicon.ico">
   <style>
     html,
     body {
@@ -21,14 +21,15 @@
     }
 
     #unity-container {
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
     }
 
-    canvas {
-      display: block;
+    #unity-canvas {
+      width: auto;
+      height: auto;
       background: #000;
     }
 
@@ -39,21 +40,19 @@
       z-index: 10;
     }
 
-    /* Botão de tela cheia */
     #fullscreen-btn {
       position: fixed;
       bottom: 20px;
       right: 20px;
       z-index: 9999;
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid #fff;
-      border-radius: 8px;
-      padding: 10px 16px;
+      background: rgba(255, 255, 255, 0.1);
       color: white;
+      padding: 10px 16px;
       font-family: sans-serif;
       font-size: 14px;
+      border-radius: 8px;
       cursor: pointer;
-      user-select: none;
+      border: 1px solid white;
       backdrop-filter: blur(4px);
     }
 
@@ -74,12 +73,11 @@
     <div id="unity-warning"></div>
   </div>
 
-  <!-- Botão de fullscreen -->
-  <div id="fullscreen-btn">Tela cheia</div>
+  <div id="fullscreen-btn">Tela Cheia</div>
 
   <script>
     const canvas = document.querySelector("#unity-canvas");
-    const fullscreenBtn = document.querySelector("#fullscreen-btn");
+    const fullscreenBtn = document.getElementById("fullscreen-btn");
 
     function unityShowBanner(msg, type) {
       const warningBanner = document.querySelector("#unity-warning");
@@ -101,15 +99,15 @@
     }
 
     const buildUrl = "Build";
-    const loaderUrl = buildUrl + "/Uebeti.loader.js";
+    const loaderUrl = buildUrl + "/build.loader.js";
     const config = {
-      dataUrl: buildUrl + "/Uebeti.data",
-      frameworkUrl: buildUrl + "/Uebeti.framework.js",
-      codeUrl: buildUrl + "/Uebeti.wasm",
+      dataUrl: buildUrl + "/build.data",
+      frameworkUrl: buildUrl + "/build.framework.js",
+      codeUrl: buildUrl + "/build.wasm",
       streamingAssetsUrl: "StreamingAssets",
-      companyName: "WeirdProduction",
-      productName: "Uebeti",
-      productVersion: "0.1",
+      companyName: "DefaultCompany",
+      productName: "MoscaCerta",
+      productVersion: "1.0",
       showBanner: unityShowBanner,
       devicePixelRatio: 1,
       matchWebGLToCanvasSize: false
@@ -137,8 +135,6 @@
         document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
       }).then((unityInstance) => {
         document.querySelector("#unity-loading-bar").style.display = "none";
-
-        // Funcionalidade do botão de fullscreen
         fullscreenBtn.onclick = () => {
           unityInstance.SetFullscreen(1);
         };
